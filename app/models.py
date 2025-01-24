@@ -1,8 +1,9 @@
-from pydantic import BaseModel
-from datetime import datetime
+from pydantic import BaseModel, Field
+from datetime import date, datetime
 
 class Quest(BaseModel):
-    name: str
-    is_done: bool = False
+    id: int
+    title: str
+    is_completed: bool = False
     description: str = None
-    due_date: datetime
+    deadline: date = Field(..., example="2025-01-01", description="Deadline")
